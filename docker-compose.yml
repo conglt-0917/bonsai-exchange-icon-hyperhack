@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  Icon:
+    image: iconloop/tbears:mainnet
+    container_name: Tbear
+    restart: always
+    working_dir: /myapp
+    tty: true
+    volumes:
+      - ./:/myapp

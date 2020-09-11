@@ -1,0 +1,118 @@
+.shelf {
+  width: 100%;
+}
+
+.plant-area {
+  /* height: 80; */
+  margin-top: auto;
+  margin-bottom: auto;
+  /* position: relative; */
+  line-height: 0 !important;
+  margin-bottom: 60px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  line-height: 1.5;
+}
+
+@keyframes bounce {
+  0% {
+    width: 70px;
+    height: 107px;
+  }
+  70% {
+    width: 115px;
+    height: 135px;
+  }
+  100% {
+    width: 100px;
+    height: 127px;
+  }
+}
+
+.plant-here {
+  width: 100px;
+  height: 127px;
+  cursor: pointer;
+  margin: auto;
+  animation-name: bounce;
+  animation-duration: 0.5s;
+}
+
+.coming-soon {
+  height: 140px;
+  background-color: white;
+  opacity: 0.6;
+  width: 98%;
+  margin: auto;
+}
+
+.lock {
+  position: relative;
+}
+
+.lock-overlay {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  top: 50px;
+}
+
+.lock-image {
+  width: 20px;
+}
+
+.lock-text {
+  font-size: medium;
+  color: white;
+  font-weight: 800;
+  margin: 20px;
+}
+
+.stem {
+  height: 70%;
+  position: relative;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.pot {
+  height: 30%;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.stem > .plantImg {
+  margin: auto;
+  width: 100%;
+  position: absolute;
+  bottom: -3px;
+  left: 0px;
+  max-height: 80%;
+}
+
+.potImg {
+  height: 100%;
+  width: 100%;
+}
+
+.customOverlay {
+  background: white;
+  opacity: 0;
+}
+.customModal {
+  background: #b2dbbf;
+  /* max-width: 500px; */
+  width: 50%;
+  opacity: 1;
+}
+
+.plant {
+  height: 100%;
+}

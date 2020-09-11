@@ -1,0 +1,113 @@
+.shelf {
+  width: 100%;
+}
+
+.plant-area {
+  /* height: 80; */
+  margin-top: auto;
+  margin-bottom: auto;
+  /* position: relative; */
+  line-height: 0 !important;
+  margin-bottom: 60px;
+}
+
+.row {
+  height: 140px;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  line-height: 1.5;
+}
+
+.stem {
+  height: 70%;
+  position: relative;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.pot {
+  height: 30%;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.stem > .plantImg {
+  margin: auto;
+  width: 100%;
+  position: absolute;
+  bottom: -3px;
+  left: 0px;
+  max-height: 80%;
+}
+
+.potImg {
+  height: 100%;
+  width: 100%;
+}
+
+.customOverlay {
+  background: white;
+  opacity: 0;
+}
+.customModal {
+  background: #b2dbbf;
+  /* max-width: 500px; */
+  width: 50%;
+  opacity: 1;
+}
+
+.flexalign {
+  display: flex;
+  align-items: flex-end;
+}
+
+@-webkit-keyframes Pump {
+  0% {
+    height: 95%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@-moz-keyframes Pump {
+  0% {
+    height: 95%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes Pump {
+  0% {
+    height: 95%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.plant {
+  -webkit-animation: Pump 0.4s ease-in-out infinite alternate;
+  -moz-animation: Pump 0.4s ease-in-out infinite alternate;
+  animation: Pump 0.4s ease-in-out infinite alternate;
+}
+
+.plant:active {
+  animation-name: plant-tap;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes plant-tap {
+  0% {
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-bottom: 10px;
+  }
+  100% {
+    margin-bottom: 0px;
+  }
+}

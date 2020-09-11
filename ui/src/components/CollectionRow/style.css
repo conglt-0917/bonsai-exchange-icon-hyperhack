@@ -1,0 +1,59 @@
+.mg-top-input {
+  margin-top: 10px !important;
+}
+
+.bgc-blue {
+  background-color: cornflowerblue;
+}
+
+.green {
+  color: green;
+}
+
+.bgc-green {
+  background-color: green;
+}
+
+.blue {
+  color: blue;
+}
+
+.plant-ava {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.plant-ava > .plantImg {
+  width: 46px;
+  max-height: 90%;
+  position: absolute;
+  bottom: 0px;
+}
+
+.item {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.radius {
+  border-radius: 5px;
+}
+
+.item > .colection-button {
+  position: absolute;
+  right: 0px;
+  /* width: 60px; */
+  margin: 15px 15px;
+}
+
+.mg-top {
+  margin-top: 20px;
+}
+
+.mgl-10 {
+  margin-left: 10px;
+}

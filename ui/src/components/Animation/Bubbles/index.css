@@ -1,0 +1,91 @@
+.bubble {
+  position: absolute;
+  background-image: url(../../../images/oxygen_bubble_big.png);
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  height: 10px;
+  width: 10px;
+}
+
+/* KEYFRAMES BUBBLE*/
+
+@-webkit-keyframes animateBubble {
+  0% {
+    margin-top: 80%;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: -80%;
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes animateBubble {
+  0% {
+    margin-top: 80%;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: -80%;
+    opacity: 0;
+  }
+}
+
+@keyframes animateBubble {
+  0% {
+    margin-top: 80%;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: -80%;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+
+@-moz-keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+
+@keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+
+.x5 {
+  -webkit-animation: animateBubble 2s linear infinite, sideWays 1s ease-in-out infinite alternate,
+    fadeOut 1s;
+  -moz-animation: animateBubble 2s linear infinite, sideWays 1s ease-in-out infinite alternate,
+    fadeOut 1s;
+  animation: animateBubble 2s linear infinite, sideWays 1s ease-in-out infinite alternate,
+    fadeOut 1s;
+
+  /* left: 20%; */
+  top: 50%;
+}

@@ -1,0 +1,16 @@
+{
+  "name": "icon-sdk-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sun research blockchain team",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "icon-sdk-js": "^0.0.18",
+    "yargs": "^15.4.1"
+  }
+}
