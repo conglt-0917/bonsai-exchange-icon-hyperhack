@@ -5,7 +5,8 @@ const initialState = {
   connected: false,
   account: null,
   purses: [],
-  plants: [],
+  plantsDict: [], // Empty array
+  plants: [], // Fill bonsai in empty array to display
   test: [],
   walletAddress: null,
   balanceICX: null,
@@ -53,6 +54,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         plants: action.plants,
         balanceBonsai: action.balanceBonsai,
+      };
+    case connect.SET_PLANTS_DICT:
+      return {
+        ...state,
+        plantsDict: action.plantsDict,
       };
     case connect.UPDATE_TOUR_STEP:
       return {

@@ -10,19 +10,29 @@ export const ConnectWallet = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (address) {
-      dispatch(actions.getBalanceOxy());
-      dispatch(actions.getBalanceBonsai());
-    }
-  }, [address, dispatch]);
+    const main = async () => {
+      if (address) {
+        dispatch(actions.getBalanceOxy());
+        dispatch(actions.getBalanceBonsai());
+
+        // request receive Oxygen
+        receiveOxygen(address, numBonsai);
+        await sleep(5000);
+        dispatch(actions.getBalanceOxy());
+      }
+    };
+
+    main();
+  }, [address, numBonsai, dispatch]);
 
   useEffect(() => {
+    // receive Oxygen every interval 30s
     let interval = setInterval(() => {
       if (address && numBonsai > 0) {
         const init = async () => {
           receiveOxygen(address, numBonsai);
           await sleep(5000);
-          await dispatch(actions.getBalanceOxy());
+          dispatch(actions.getBalanceOxy());
         };
         init();
       }
@@ -41,8 +51,6 @@ export const ConnectWallet = () => {
       case 'RESPONSE_JSON-RPC':
         if (payload.id === 1) {
           let bonsai = JSON.parse(localStorage.getItem('BonsaiBuying'));
-          let notFisrtTour = localStorage.getItem('notFirstTour');
-          if (!notFisrtTour) localStorage.removeItem('noNeedTour');
           if (bonsai) {
             localStorage.removeItem('BonsaiBuying');
             dispatch(actions.setLoading(true));
@@ -52,7 +60,6 @@ export const ConnectWallet = () => {
               dispatch(actions.getBalanceOxy());
 
               dispatch(actions.updateTourStep(3));
-              localStorage.setItem('notFirstTour', true);
             } else {
               message.error('Transaction Has Failed !', 1.5);
             }
@@ -73,7 +80,6 @@ export const ConnectWallet = () => {
             const bonsaiID = await getTransferBonsaiID(payload.result);
             if (bonsaiID) {
               await sleep(5000);
-              dispatch(actions.removePlant(bonsaiID));
               dispatch(actions.getBalanceBonsai());
             }
 

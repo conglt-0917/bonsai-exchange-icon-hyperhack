@@ -27,18 +27,18 @@ ICON Token Standard have used by app
 
 Bonsai Exchange :
 
-1. Buy plants from stock
-2. Planting trees in the collection.
+1. Buy bonsai from stock
+2. Planting bonsai in the collection.
 3. After a certain period of time (30 second), each bonsai will photosynthesize some oxygen.
 4. Transfer bonsai to friend.
 
 Future:
 
-1. The contract has the ability to update properties such as the life of a plant, which will display other forms of the plant such as sprouting, flowering, and fruiting.
+1. The contract has the ability to update properties such as the life of a bonsai, which will display other forms of the bonsai such as sprouting, flowering, and fruiting.
 
 ![growing](https://user-images.githubusercontent.com/52224456/92190568-b43d4300-ee8b-11ea-8699-3ce18938ed26.png)
 
-2. It is possible to resell the trees you have planted
+2. It is possible to resell the bonsai you have planted
 
 ## Video Demo
 

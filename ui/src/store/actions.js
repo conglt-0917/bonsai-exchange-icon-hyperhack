@@ -7,7 +7,6 @@ import {
   sleep,
   getPlantDict,
   setPlantDict,
-  isTxSuccess,
 } from 'helpers';
 import { PLANT_STATUS, plantsInitDic } from 'constant';
 
@@ -79,17 +78,20 @@ export const setAddress = (walletAddress) => (dispatch) => {
 };
 
 export const GET_BALANCE_BONSAI = 'GET_BALANCE_BONSAI';
+export const SET_PLANTS_DICT = 'SET_PLANTS_DICT';
 export const getBalanceBonsai = () => async (dispatch, getState) => {
   let state = getState();
   let address = state.walletAddress;
-  const balanceBonsai = await getBalanceBonsaiIcon(address); //[bonsainames[], bonsaiIds[]]
-
-  let plants = await getPlantDict(address);
+  let balanceBonsai = await getBalanceBonsaiIcon(address); //[bonsainames[], bonsaiIds[]]
+  let plantsDict = await getPlantDict(address);
   // if this is first time plants in contract is undefined
-  if (plants === undefined) {
-    plants = JSON.parse(JSON.stringify(plantsInitDic));
-    plants = Object.values(plants);
+  if (plantsDict === undefined) {
+    plantsDict = JSON.parse(JSON.stringify(plantsInitDic));
+    plantsDict = Object.values(plantsDict);
   }
+  // copy plantDict
+  let plants = JSON.parse(JSON.stringify(plantsDict));
+
   // if not error
   if (balanceBonsai && balanceBonsai !== -1) {
     balanceBonsai[0].forEach((name, index) => {
@@ -106,6 +108,11 @@ export const getBalanceBonsai = () => async (dispatch, getState) => {
 
   plants = Object.values(plants);
   plants.map((plant, index) => (plant.index = index));
+
+  dispatch({
+    type: SET_PLANTS_DICT,
+    plantsDict,
+  });
 
   dispatch({
     type: GET_BALANCE_BONSAI,
@@ -134,20 +141,34 @@ export const transferPlantLocation = (secondPlant) => async (dispatch, getState)
   let state = getState();
 
   let firstPlant = state.firstPlant;
+  let plantsDict = state.plantsDict;
   let plants = state.plants;
   let address = state.walletAddress;
-  // transfer
+
+  // transfer in empty array
   let temp = plants[firstPlant];
   plants[firstPlant] = plants[secondPlant];
   plants[secondPlant] = temp;
 
-  // update index
   plants.map((plant, index) => (plant.index = index));
-  await setPlantDict(plants, address);
 
   dispatch({
     type: CHANGE_PLANT_STATUS,
     plants,
+  });
+
+  // transfer in empty array
+  temp = plantsDict[firstPlant];
+  plantsDict[firstPlant] = plantsDict[secondPlant];
+  plantsDict[secondPlant] = temp;
+
+  // update index
+  plantsDict.map((plant, index) => (plant.index = index));
+  await setPlantDict(plantsDict, address);
+
+  dispatch({
+    type: SET_PLANTS_DICT,
+    plantsDict,
   });
 };
 
@@ -167,18 +188,4 @@ export const setLoading = (loading) => (dispatch) => {
     type: SET_LOADING,
     loading,
   });
-};
-
-export const removePlant = (id) => async (dispatch, getState) => {
-  let state = getState();
-  let plants = state.plants;
-  let address = state.walletAddress;
-  const x = plants.findIndex((plant) => plant.id === id);
-
-  plants[x].id = null;
-  plants[x].plantStatus = PLANT_STATUS.INSTORE;
-
-  const txHash = await setPlantDict(plants, address);
-  const isSuccess = await isTxSuccess(txHash);
-  if (isSuccess) dispatch(getBalanceBonsai());
 };
